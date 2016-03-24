@@ -64,76 +64,75 @@ a0000000b.gdbtable - Raster Auxilliary Table
 
 Fields:
 
-- rasterband_id: 
+- `rasterband_id` 
     Foriegn key to the Raster Band tables' primary key.
     
-- type: 
+- `type`
     'Bit map set according to the characteristics of data store in the object column'
     
-- object:
+- `object`
     ?? binary blob. Perhaps for statistics/colour maps
 
 
-a0000000c.gdbtable
+a0000000c.gdbtable - Raster Block Table
 -------------------
-'Raster Block Table'
 
 Fields:
 
-:rasterband_id:
-:rrd_factor:
+- `rasterband_id`
+- `rrd_factor`
     'Reduced resolution dataset factor', determines position of the raster band block within the resolution pyramid. 0 For highest resolution
-:row_nbr:
+- `row_nbr`
     The block's row number
-:col_nbr:
+- `col_nbr`
     The blocks' column number
-:block_data:
+- `block_data`
     the pixel data for this block. Binary blob. Appears to have some form of header (?) before the actual data
-:block_key:
+- `block_key`
 
-a0000000d.gdbtable
+a0000000d.gdbtable - Raster Band Table
 -------------------
-Raster Band Table
+
 
 Fields:
 
-:rasterband_id:	
+- `rasterband_id`
     The primary key of the raster band table that uniquely identifies each raster band
-:sequence_nbr:
+- `sequence_nbr`
     An optional sequential number that can be combined with the raster_id as a composite key as a second way to uniquely identify the raster band
-:raster_id:
+- `raster_id`
     The foreign key reference to the raster tables primary key Uniquely identifies the raster band when combined with the sequence_nbr as a composite key
-:name:
+- `name`
     The name of the raster band
-:band_flags:
+- `band_flags`
     A bit map set according to the characteristics of the raster band
-:band_width:
+- `band_width`
     The pixel width of the band
-:band_height:
+- `band_height`
     The pixel height of the band
-:band_types:	
+- `band_types`
     A bitmap band compression data
-:block_width:
+- `block_width`
     The pixel width of the band's tiles
-:block_height:
+- `block_height`
     The pixel height of the band's tiles
-:block_origin_x:
+- `block_origin_x`
     The left-most pixel
-:block_origin_y:
+- `block_origin_y`
     The bottom-most pixel
-:eminx:
+- `eminx`
     The band's minimum X coordinate
-:eminy: 
+- `eminy` 
     The band's minimum Y coordinate
-:emaxx:	
+- `emaxx`
     The band's maximum X coordinate
-:emaxy:
+- `emaxy`
     The band's maximum Y coordinate
-:cdate:
+- `cdate`
     The creation date
-:mdate:
+- `mdate`
     The last modification date
-:srid:
+- `srid`
     Some identifier for the SRID code. It is *not* EPSG
 
 
