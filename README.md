@@ -24,31 +24,28 @@ Raster Files
 ============
 The following files are present in ``empty_raster.gdb`` but not ``empty.gdb``
 
-Name|Empty size
-a0000000a.gdbtable 280  
-a0000000b.gdbtable 138  
-a0000000c.gdbtable 225  
-a0000000d.gdbtable 598 598
-a00000009.gdbtable 2195 
-
-a0000000c.blk_key_index.atx 4118 
-a0000000c.col_index.atx 4118 
-a0000000c.row_index.atx 4118 
-a0000000c.band_index.atx 4118 
-
-a0000000a.gdbindexes 70  
-a0000000b.gdbindexes 66 
-a0000000c.gdbindexes 308 
-a0000000d.gdbindexes 86   
-a00000009.gdbindexes 112 
-
-a00000009.gdbtablx 5152 
-a0000000a.gdbtablx 5152 
-a0000000b.gdbtablx 32 
-a0000000c.gdbtablx 32  
-a0000000d.gdbtablx 5152 
-
-a00000009.spx 4118 
+|Name|Empty size|
+|:---:|:-------:|
+|a0000000a.gdbtable| 280  |
+|a0000000b.gdbtable |138  |
+|a0000000c.gdbtable |225  |
+|a0000000d.gdbtable |598 |
+|a00000009.gdbtable |2195 |
+|a0000000c.blk_key_index.atx |4118 |
+|a0000000c.col_index.atx |4118 |
+|a0000000c.row_index.atx |4118 |
+|a0000000c.band_index.atx |4118 |
+|a0000000a.gdbindexes| 70  |
+|a0000000b.gdbindexes| 66 |
+|a0000000c.gdbindexes| 308 |
+|a0000000d.gdbindexes| 86   |
+|a00000009.gdbindexes| 112 |
+|a00000009.gdbtablx |5152 |
+|a0000000a.gdbtablx |5152 |
+|a0000000b.gdbtablx |32 |
+|a0000000c.gdbtablx |32  |
+|a0000000d.gdbtablx |5152 |
+|a00000009.spx| 4118 |
 
 The above files are therefore the set of tables for a single raster.
 
