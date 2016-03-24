@@ -1,18 +1,6 @@
-References
-===========
-This page in particular gives an interesting snippet:
-http://desktop.arcgis.com/en/arcmap/10.3/manage-data/raster-and-images/how-raster-data-is-stored-and-managed.htm
-
-'The storage model of the file geodatabases is a hybrid of the enterprise geodatabase and the personal geodatabase'.
-The Enterprise Geodatabase (ArcSDE) schema is fairly well documented here:
-http://edndoc.esri.com/arcsde/9.2/concepts/rasters/dbschema/dbschema_diagram.htm
-
-The personal geodatbaase is an MS Access database, so the schema can be inspected in MSAccess.
-
-https://blogs.esri.com/esri/arcgis/2010/03/15/the-simplified-geodatabase-schema-in-arcgis-10/
-http://edndoc.esri.com/arcsde/9.2/concepts/rasters/dbschema/dbschema_diagram.htm
-http://help.arcgis.com/EN/ArcGISDesktop/10.0/Help/index.html#//009t0000002z000000
-https://github.com/rouault/dump_gdbtable/wiki/FGDB-Spec
+File Geodatabase Raster Specification
+=====================================
+This is an ongoing attempt to decipher the storage format for rasters' in an ESRI File Geodatabase.
 
 Test Data
 ==========
@@ -61,32 +49,28 @@ Table Files
 From the above references, the `dump_gdb.py` tool created for the FGDB vector reverse engineering and by creating small rasters with tiny changes,
 we can deduce structure/heirarchy of the .gdbtable files (these files contain the actual data).
 
-a0000000a.gdbtable
+a0000000a.gdbtable - Business Table/Raster Table
 -------------------
-Business Table/Raster Table
+Fields:
+
+- `raster_id` Primary key of the raster table 
+- `raster_flags`'bit map set according to characteristics of stored image'
+- `description`? presuambly can store a string description
+- `storage_def` Binary field, perhaps whether it is a managed raster, moasiac, 'raster as attribute'?
+
+a0000000b.gdbtable - Raster Auxilliary Table
+-------------------
+
 
 Fields:
 
-:raster_id: 
-    Primary key of the raster table 
-:raster_flags: 
-    'bit map set according to characteristics of stored image'
-:description:  
-    ? presuambly can store a string description
-:storage_def:
-    Binary field, perhaps whether it is a managed raster, moasiac, 'raster as attribute'?
-
-a0000000b.gdbtable
--------------------
-Raster Auxilliary Table
-
-Fields:
-
-:rasterband_id: 
+- rasterband_id: 
     Foriegn key to the Raster Band tables' primary key.
-:type: 
+    
+- type: 
     'Bit map set according to the characteristics of data store in the object column'
-:object:
+    
+- object:
     ?? binary blob. Perhaps for statistics/colour maps
 
 
@@ -157,3 +141,23 @@ a00000009.gdbtable
 -------------------
 Raster Geometry?
 Appears to store info on the geometry of the raster (bounding box, Area, 'Length'?)
+
+
+References
+===========
+This work has largely been pieced together by the amazing work done here: https://github.com/rouault/dump_gdbtable
+and various documentation snippets published by ESRI.
+
+This page in particular gives an interesting snippet:
+http://desktop.arcgis.com/en/arcmap/10.3/manage-data/raster-and-images/how-raster-data-is-stored-and-managed.htm
+
+'The storage model of the file geodatabases is a hybrid of the enterprise geodatabase and the personal geodatabase'.
+The Enterprise Geodatabase (ArcSDE) schema is fairly well documented here:
+http://edndoc.esri.com/arcsde/9.2/concepts/rasters/dbschema/dbschema_diagram.htm
+
+The personal geodatbaase is an MS Access database, so the schema can be inspected in MSAccess.
+
+https://blogs.esri.com/esri/arcgis/2010/03/15/the-simplified-geodatabase-schema-in-arcgis-10/
+http://edndoc.esri.com/arcsde/9.2/concepts/rasters/dbschema/dbschema_diagram.htm
+http://help.arcgis.com/EN/ArcGISDesktop/10.0/Help/index.html#//009t0000002z000000
+https://github.com/rouault/dump_gdbtable/wiki/FGDB-Spec
